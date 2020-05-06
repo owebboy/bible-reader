@@ -13,6 +13,8 @@ let app = () => {
     // set book to be GEN and chapter to be 1
     state.update("GEN", 1)
 
+    console.log(state.getNext())
+    console.log(state.getPrev())
 }
 
 window.addEventListener("keydown", e => {

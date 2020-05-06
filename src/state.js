@@ -20,6 +20,72 @@ const state = {
 
     },
 
+    getNext: () => {
+        // get the current position
+        let chaptersOfBook = Object.keys(bible[state.book].chapters)
+
+        let idx = chaptersOfBook.indexOf(state.chapter.toString())
+        let nextChapter = chaptersOfBook[idx + 1]
+
+        if(idx + 1 > chaptersOfBook.length - 1) {
+            
+            // get next book's first chapter
+            let bids = Object.keys(bible)
+            let bidx = bids.indexOf(state.book)
+            if(bidx > -1 && bidx < bids.length - 1) {
+                let nextBook = bids[bidx+1]
+                return {
+                    book: nextBook,
+                    chapter: 1
+                }
+            } else {
+                return null
+            }
+
+        } else {
+
+            // return this books next chapter
+            return {
+                book: state.book,
+                chapter: nextChapter
+            }
+
+        }
+    },
+
+    getPrev: () => {
+        let chaptersOfBook = Object.keys(bible[state.book].chapters)
+
+        let idx = chaptersOfBook.indexOf(state.chapter.toString())
+        let prevChapter = chaptersOfBook[idx - 1]
+
+        if(idx - 1 < 0) {
+
+                // get prev chapter's last book
+                let bids = Object.keys(bible)
+
+                let bidx = bids.indexOf(state.book)
+                if(bidx > 0 && bidx < bids.length) {
+                    // console.log(, state.book)
+                    let prevBook = bids[idx-1]
+                    let chapter = Object.keys(bible[prevBook].chapters)[Object.keys(bible[prevBook].chapters).length - 1]
+                    return {
+                        book: prevBook,
+                        chapter: chapter
+                    }
+                }
+
+                return null
+        } else {
+            
+                return {
+                    book: state.book,
+                    chapter: prevChapter
+                }
+
+        }
+    },
+
     nextChapter: () => {
         // get the current position
         let chaptersOfBook = Object.keys(bible[state.book].chapters)
@@ -38,12 +104,12 @@ const state = {
         let chaptersOfBook = Object.keys(bible[state.book].chapters)
 
         let idx = chaptersOfBook.indexOf(state.chapter.toString())
-        let nextChapter = chaptersOfBook[idx - 1]
+        let prevChapter = chaptersOfBook[idx - 1]
 
         if(idx - 1 < 0) {
             state.prevBook(true)
         } else {
-            state.update(state.book, nextChapter)
+            state.update(state.book, prevChapter)
         }
     },
 
