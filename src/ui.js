@@ -98,7 +98,6 @@ const ui = {
         word.addEventListener("mouseenter", e => {
             let words = document.querySelectorAll(`[data-word="${word.dataset.word}"]`)
             words.forEach(e => e.style.backgroundColor = `#aaa`)
-            console.log(words.length)
         })
         word.addEventListener("mouseleave", e => {
             let words = document.querySelectorAll(`[data-word="${word.dataset.word}"]`)
