@@ -20,7 +20,8 @@ body {
 
 .document {
     display: flex;
-    padding-top: 3.3em;
+    padding: 3.3em 0;
+    
     height: calc(100% - 6.6em);
 }
 
@@ -54,11 +55,12 @@ body {
     border-bottom-right-radius: 10px;
     width: calc(15% - 2em);
     padding: 1em;
+    margin: 1em 0;
     display: flex;
     justify-content: space-between;
     align-self: center;
     cursor: pointer;
-    height: 90%;
+    height: calc(90% - 4em);
     color: #555;
     box-shadow: 0 0 20px #ccc;
 
@@ -75,8 +77,9 @@ body {
 
 .body {
     width: calc(85% - 4em);
-    padding: 0 2em;
-    height: 100%;  
+    padding: 1em 2em;
+    margin: 1em 0;
+    height: calc(100% - 2.8em);  
     overflow-y: scroll;
 }
 
