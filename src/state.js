@@ -1,5 +1,6 @@
 import ui from './ui';
 import bible from './bible.min.json';
+import tableOfContents from "./tableOfContents"
 
 const state = {
     book: null,
@@ -19,6 +20,8 @@ const state = {
         ui.build_nav(state.getPrev(), state.getNext());
 
         ui.scroll(book, chapter)
+
+        tableOfContents.setActive(book, chapter)
     },
 
     getNext: () => {

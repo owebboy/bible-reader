@@ -3,7 +3,7 @@ body {
     height: 100vh;
     justify-content: space-between;
     overflow: hidden;
-    font-family:  Calibri, 'Trebuchet MS', sans-serif;
+    font-family: Calibri, 'Trebuchet MS', sans-serif;
 
     color: #222;
 }
@@ -21,7 +21,7 @@ body {
 .document {
     display: flex;
     padding: 3.3em 0;
-    
+
     height: calc(100% - 6.6em);
 }
 
@@ -29,7 +29,8 @@ body {
     display: none;
 }
 
-.prev, .next {
+.prev,
+.next {
     cursor: pointer;
 }
 
@@ -39,14 +40,64 @@ body {
 }
 
 .list-item {
-    padding: .1em .5em;
+    padding: 0.1em 0.5em;
     border-radius: 5px;
-    transition: .1s all;
+    transition: 0.1s all;
 }
 
 .list-item:hover {
     background-color: hsl(225, 73%, 57%);
     color: #fff;
+}
+
+.title {
+    cursor: pointer;
+}
+
+.current_position {
+    cursor: pointer;
+}
+
+.tableOfContents {
+    overflow-y: scroll;
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(34, 34, 34, 0.5);
+    padding: 1em;
+    display: none;
+}
+.toc_active {
+    display: block;
+}
+
+.books {
+    background-color: white;
+    margin: 1em 20%;
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #444;
+    margin-bottom: 10em;
+}
+
+.book-chapters {
+    display: flex;
+    flex-wrap: wrap;
+}
+.book-title {
+    font-size: 1.2em;
+}
+.book-chapter {
+    padding: 0.5em;
+    cursor: pointer;
+    transition: 0.2s all;
+    border-radius: 10px;
+}
+.book-chapter:hover {
+    background-color: royalblue;
+    color: white;
 }
 
 .sidebar {
@@ -63,35 +114,34 @@ body {
     height: calc(90% - 4em);
     color: #555;
     box-shadow: 0 0 20px #ccc;
-
 }
 
-.books_idx, .chapters_idx {
+.books_idx,
+.chapters_idx {
     overflow-y: scroll;
 }
 
-.books_idx::-webkit-scrollbar, .chapters_idx::-webkit-scrollbar {
+.books_idx::-webkit-scrollbar,
+.chapters_idx::-webkit-scrollbar {
     width: 0px;
     background: transparent; /* make scrollbar transparent */
 }
 
 .body {
-    width: calc(85% - 4em);
     padding: 1em 2em;
     margin: 1em 0;
-    height: calc(100% - 2.8em);  
+    height: calc(100% - 2.8em);
     overflow-y: scroll;
 }
 
 .verse {
-    
     display: flex;
-    padding: .5em;
+    padding: 0.5em;
     align-items: center;
 }
 
 .verse-id {
-    font-family:  Calibri, 'Trebuchet MS', sans-serif;
+    font-family: Calibri, 'Trebuchet MS', sans-serif;
 
     width: calc(3% - 1em);
     margin-right: 1em;
@@ -100,11 +150,12 @@ body {
 }
 
 .verse-content {
-    width:97%;
+    width: 97%;
     font-size: 1.3em;
 }
 
-header, footer {
+header,
+footer {
     background-color: #fff;
     width: calc(100vw - 4em);
     position: fixed;
@@ -114,17 +165,51 @@ header, footer {
     box-shadow: 0 0 20px #ccc;
 }
 
-
-
 footer {
-    bottom:0;
+    bottom: 0;
 }
 
-@media screen and (min-width: 1024px) {
+@media (max-width: 767.98px) {
+    .sidebar {
+        display: none;
+    }
+    .body {
+        width: calc(100% - 4em);
+    }
+    .books {
+        margin: 1em 5%;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .sidebar {
+        display: none;
+    }
+    .body {
+        width: calc(100% - 4em);
+    }
+}
+
+@media (max-width: 1199.98px) {
     .sidebar {
         width: calc(25% - 2em);
     }
     .body {
         width: calc(75% - 4em);
     }
+}
+
+.sidebar {
+    width: calc(15% - 2em);
+}
+.body {
+    width: calc(100% - 4em);
+}
+
+.context {
+    display: none;
+}
+
+.context-active {
+    display: block;
 }

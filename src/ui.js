@@ -11,10 +11,14 @@ const ui = {
     build_nav: (prev, next) => {
         if (prev) {
             elements.prev.textContent = `${prev.book} ${prev.chapter}`;
+        } else {
+            elements.prev.textContent = null
         }
 
         if (next) {
             elements.next.textContent = `${next.book} ${next.chapter}`;
+        } else {
+            elements.next.textContent = null
         }
     },
 
@@ -105,39 +109,33 @@ const ui = {
         let content = document.createElement('div');
         content.classList.add('verse-content');
 
-        // tokenize the verse
-        verse.split(' ').forEach((e) => {
-            let word = document.createElement('span');
-            word.classList.add('verse-word');
-            word.textContent = e;
-            word.dataset.word = word.textContent
-                .toLowerCase()
-                .replace(/[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/g, '');
-            // word.addEventListener("mouseenter", (e) => {
-            //   let words = document.querySelectorAll(
-            //     `[data-word="${word.dataset.word}"]`
-            //   );
-            //   words.forEach((e) => {
-            //     e.style.backgroundColor = `royalblue`;
-            //     e.style.color = `white`;
-            //   });
-            // });
-            // word.addEventListener("mouseleave", (e) => {
-            //   let words = document.querySelectorAll(
-            //     `[data-word="${word.dataset.word}"]`
-            //   );
-            //   words.forEach((e) => {
-            //     e.style.backgroundColor = `white`;
-            //     e.style.color = null;
-            //   });
-            // });
+        let verseVerse = document.createElement('span')
+        verseVerse.classList.add("verse-verse")
+        verseVerse.textContent = verse
+        verseVerse.addEventListener("click", e => {
+            verseVerse.style.borderBottom = "1px dotted"
+        })
 
-            content.append(word);
+        content.appendChild(verseVerse)
 
-            // add space
-            let space = document.createTextNode(' ');
-            content.append(space);
-        });
+        // word.addEventListener("mouseenter", (e) => {
+        //       let words = document.querySelectorAll(
+        //         `[data-word="${word.dataset.word}"]`
+        //       );
+        //       words.forEach((e) => {
+        //         e.style.backgroundColor = `royalblue`;
+        //         e.style.color = `white`;
+        //       });
+        //     });
+        //     word.addEventListener("mouseleave", (e) => {
+        //       let words = document.querySelectorAll(
+        //         `[data-word="${word.dataset.word}"]`
+        //       );
+        //       words.forEach((e) => {
+        //         e.style.backgroundColor = `white`;
+        //         e.style.color = null;
+        //       });
+        //     });
         v.appendChild(content);
 
         return v;
