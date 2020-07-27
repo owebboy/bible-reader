@@ -9,6 +9,16 @@ const tableOfContents = {
         const dom = document.createElement("div")
         dom.classList.add("books")
 
+        const exitWrapper = document.createElement("div")
+        exitWrapper.classList.add("toc-exit")
+        const exit = document.createElement("i")
+        exit.classList.add("fal", "fa-times-circle")
+        exitWrapper.addEventListener("click", e => {
+            tableOfContents.hide()
+        })
+        exitWrapper.appendChild(exit)
+        dom.append(exitWrapper)
+
         for (let [key, value] of Object.entries(bible)) {
 
             const book = document.createElement("div")

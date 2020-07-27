@@ -48,10 +48,16 @@ window.addEventListener('keydown', (e) => {
             e.preventDefault();
             state.prevBook();
             break;
+
         case 'ArrowDown':
             e.preventDefault();
             state.nextBook();
             break;
+
+        case "Escape":
+            tableOfContents.hide()
+            break;
+
         default:
             break;
     }
