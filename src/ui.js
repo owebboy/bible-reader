@@ -1,21 +1,24 @@
 import state from "./state";
-
-const elements = {
-  books_idx: document.querySelector(".books_idx"),
-  chapters_idx: document.querySelector(".chapters_idx"),
-  verses_idx: document.querySelector(".verses_idx"),
-  chapter_heading: document.querySelector(".chapter_heading"),
-  verses: document.querySelector(".verses"),
-  current_position: document.querySelector(".current_position"),
-  next: document.querySelector(".next"),
-  prev: document.querySelector(".prev"),
-};
+import elements from "./elements"
 
 const ui = {
   list_books: (bible) => {
     for (let [key, value] of Object.entries(bible)) {
       ui.list_item(elements.books_idx, key, 1, key, value.short);
     }
+  },
+
+  build_nav: (prev, next) => {
+    if(prev) {
+
+      elements.prev.textContent = `${prev.book} ${prev.chapter}`
+
+    }
+
+    if(next) {
+      elements.next.textContent = `${next.book} ${next.chapter}`
+    }
+
   },
 
   list_chapters: (bible, book) => {
@@ -97,7 +100,7 @@ const ui = {
         word.dataset.word = word.textContent.toLowerCase().replace(/[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/g, "")
         word.addEventListener("mouseenter", e => {
             let words = document.querySelectorAll(`[data-word="${word.dataset.word}"]`)
-            words.forEach(e => e.style.backgroundColor = `#aaa`)
+            words.forEach(e => e.style.backgroundColor = `rgba(0,255,0,.5)`)
         })
         word.addEventListener("mouseleave", e => {
             let words = document.querySelectorAll(`[data-word="${word.dataset.word}"]`)

@@ -1,0 +1,97 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    justify-content: space-between;
+    overflow: hidden;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #222;
+}
+
+.chapters_idx .list-item {
+    text-align: right;
+}
+
+.chapter_heading {
+    text-align: center;
+    font-size: 2em;
+    padding: 1em 0;
+}
+
+.document {
+    display: flex;
+    padding-top: 3.3em;
+    height: calc(100% - 6.6em);
+}
+
+.menu {
+    display: none;
+}
+
+.prev, .next {
+    cursor: pointer;
+}
+
+.active {
+    color: royalblue;
+}
+
+.sidebar {
+    font-family:  Calibri, 'Trebuchet MS', sans-serif;
+    width: calc(15% - 2em);
+    padding: 0 1em;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    overflow-y: scroll;
+    height: 100%;
+    color: #555;
+}
+
+.body {
+    width: calc(85% - 4em);
+    padding: 0 2em;
+    height: 100%;  
+    overflow-y: scroll;
+}
+
+.verse {
+    
+    display: flex;
+    padding: .5em;
+    align-items: center;
+}
+
+.verse-id {
+    font-family:  Calibri, 'Trebuchet MS', sans-serif;
+
+    width: calc(3% - 1em);
+    margin-right: 1em;
+    text-align: right;
+    color: #aaa;
+}
+
+.verse-content {
+    width:97%;
+    font-size: 1.3em;
+}
+
+header {
+    background-color: #f2f7f7;
+    width: calc(100vw - 4em);
+    position: fixed;
+    padding: 1em 2em;
+    border-bottom: 1px solid;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer {
+    background-color: #f2f7f7;
+    width: calc(100vw - 4em);
+    position: fixed;
+    bottom:0;
+    padding: 1em 2em;   
+    border-top: 1px solid;
+    display: flex;
+    justify-content: space-between;
+}
