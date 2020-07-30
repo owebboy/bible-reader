@@ -4,7 +4,7 @@ import state from './state';
 import 'normalize.css';
 import './style.css';
 import elements from './elements';
-import tableOfContents from "./tableOfContents"
+import tableOfContents from './tableOfContents';
 
 let app = () => {
     ui.list_books(bible);
@@ -12,8 +12,7 @@ let app = () => {
     // set book to be GEN and chapter to be 1
     state.update('GEN', 1);
 
-    tableOfContents.build(bible)
-
+    tableOfContents.build(bible);
 };
 
 elements.prev.addEventListener('click', (e) => {
@@ -24,13 +23,13 @@ elements.next.addEventListener('click', (e) => {
     state.nextChapter();
 });
 
-elements.title.addEventListener("click", e=> {
-    state.update("GEN", 1)
-})
+elements.title.addEventListener('click', (e) => {
+    state.update('GEN', 1);
+});
 
-elements.current_position.addEventListener("click", e=> {
-    tableOfContents.toggle()
-})
+elements.current_position.addEventListener('click', (e) => {
+    tableOfContents.toggle();
+});
 
 window.addEventListener('keydown', (e) => {
     switch (e.key) {
@@ -54,8 +53,8 @@ window.addEventListener('keydown', (e) => {
             state.nextBook();
             break;
 
-        case "Escape":
-            tableOfContents.hide()
+        case 'Escape':
+            tableOfContents.hide();
             break;
 
         default:
@@ -64,3 +63,14 @@ window.addEventListener('keydown', (e) => {
 });
 
 window.addEventListener('load', app);
+
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker
+            .register('/service-worker.js')
+            .then((registration) => {
+            })
+            .catch((registrationError) => {
+            });
+    });
+}
