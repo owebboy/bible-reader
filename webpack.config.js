@@ -4,8 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const CopyPlugin = require('copy-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
-
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -30,21 +29,21 @@ module.exports = {
             title: 'Bible',
             template: './src/index.html',
         }),
-        new WorkboxPlugin.GenerateSW({
-            clientsClaim: true,
-            skipWaiting: true,
-        }),
+        new FaviconsWebpackPlugin('./src/logo.png'), // svg works too!
+
         new WebpackPwaManifest({
             name: 'Holytext',
             short_name: 'holytext',
             description: 'holytext is a bible app',
             background_color: '#ffffff',
-            theme_color: "#002366",
+            theme_color: '#002366',
             crossorigin: null, //can be null, use-credentials or anonymous
         }),
-        new FaviconsWebpackPlugin('./src/logo.png') // svg works too!
 
-        
+        new WorkboxPlugin.GenerateSW({
+            clientsClaim: true,
+            skipWaiting: true,
+        }),
     ],
     output: {
         filename: '[name].[hash].js',
