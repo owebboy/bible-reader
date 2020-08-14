@@ -108,15 +108,16 @@ const ui = {
 
         let content = document.createElement('div');
         content.classList.add('verse-content');
+        content.textContent = verse
 
-        let verseVerse = document.createElement('span')
-        verseVerse.classList.add("verse-verse")
-        verseVerse.textContent = verse
-        verseVerse.addEventListener("click", e => {
-            verseVerse.style.borderBottom = "1px dotted"
-        })
+        // let verseVerse = document.createElement('span')
+        // verseVerse.classList.add("verse-verse")
+        // verseVerse.textContent = verse
+        // verseVerse.addEventListener("click", e => {
+        //     verseVerse.style.borderBottom = "1px dotted"
+        // })
 
-        content.appendChild(verseVerse)
+        // content.appendChild(verseVerse)
 
         // word.addEventListener("mouseenter", (e) => {
         //       let words = document.querySelectorAll(
