@@ -7,6 +7,7 @@ import elements from './elements';
 import tableOfContents from './tableOfContents';
 
 let app = () => {
+    ui.start_loader()
     return import(
         /* webpackChunkName: "bible" */
 
@@ -23,6 +24,7 @@ let app = () => {
             state.update('GEN', 1);
 
             tableOfContents.build(bible);
+            ui.end_loader()
         })
         .catch((error) => console.log(error));
 };

@@ -12,13 +12,13 @@ const ui = {
         if (prev) {
             elements.prev.textContent = `${prev.book} ${prev.chapter}`;
         } else {
-            elements.prev.textContent = null
+            elements.prev.textContent = null;
         }
 
         if (next) {
             elements.next.textContent = `${next.book} ${next.chapter}`;
         } else {
-            elements.next.textContent = null
+            elements.next.textContent = null;
         }
     },
 
@@ -108,7 +108,7 @@ const ui = {
 
         let content = document.createElement('div');
         content.classList.add('verse-content');
-        content.textContent = verse
+        content.textContent = verse;
 
         // let verseVerse = document.createElement('span')
         // verseVerse.classList.add("verse-verse")
@@ -140,6 +140,14 @@ const ui = {
         v.appendChild(content);
 
         return v;
+    },
+
+    start_loader: () => {
+        elements.loader.classList.add('loader-active');
+    },
+
+    end_loader: () => {
+        elements.loader.classList.remove('loader-active');
     },
 };
 

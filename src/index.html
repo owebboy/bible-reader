@@ -1,52 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer async src="https://kit.fontawesome.com/b5ce7e2341.js" crossorigin="anonymous"></script>
-    <title>The Bible</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script
+            defer
+            async
+            src="https://kit.fontawesome.com/b5ce7e2341.js"
+            crossorigin="anonymous"
+        ></script>
+        <title>The Bible</title>
+    </head>
+    <body>
+        <header>
+            <div class="title"><i class="fad fa-bible"></i></div>
+            <!-- <div class="header">World English Bible</div> -->
+            <div class="current_position"></div>
+        </header>
 
-</head>
-<body>
-
-    <header>
-
-        <div class="title"><i class="fad fa-bible"></i></div>
-        <!-- <div class="header">World English Bible</div> -->
-        <div class="current_position"></div>
-
-    </header>
-    
-    <div class="document">
-        <div class="sidebar">
-
-            <div class="books_idx"></div>
-            <div class="chapters_idx"></div>
-    
-        </div>
-    
-        <div class="body">
-    
-            <div class="chapter_heading"></div>
-    
-            <div class="verses"></div>
-    
+        <div class="loader">
+            <div class="fa-6x">
+                <i class="fas fa-spinner fa-pulse"></i>
+            </div>
         </div>
 
-        <footer>
-            <div class="prev"></div>
-            <div class="next"></div>
-        </footer>
-    
-    </div>
+        <div class="document">
+            <div class="sidebar">
+                <div class="books_idx"></div>
+                <div class="chapters_idx"></div>
+            </div>
 
-    <div class="context">
-        
-    </div>
+            <div class="body">
+                <div class="chapter_heading"></div>
 
-    <div class="tableOfContents"></div>
+                <div class="verses"></div>
+            </div>
 
-    <noscript>Sorry, this web application requires a JavaScript enabled browser</noscript>
+            <footer>
+                <div class="prev"></div>
+                <div class="next"></div>
+            </footer>
+        </div>
 
-</body>
+        <div class="context"></div>
+
+        <div class="tableOfContents"></div>
+
+        <noscript
+            >Sorry, this web application requires a JavaScript enabled
+            browser</noscript
+        >
+    </body>
 </html>

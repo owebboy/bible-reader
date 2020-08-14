@@ -11,5 +11,6 @@ export default {
     sidebar: document.querySelector('.sidebar'),
     context: document.querySelector(".context"),
     title: document.querySelector(".title"),
-    tableOfContents: document.querySelector(".tableOfContents")
+    tableOfContents: document.querySelector(".tableOfContents"),
+    loader: document.querySelector(".loader")
 };
