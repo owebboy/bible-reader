@@ -29,17 +29,17 @@ module.exports = {
             title: 'Bible',
             template: './src/index.html',
         }),
-        // new WorkboxPlugin.GenerateSW({
-        //     clientsClaim: true,
-        //     skipWaiting: true,
-        // }),
-        // new WebpackPwaManifest({
-        //     name: 'Holytext',
-        //     short_name: 'holytext',
-        //     description: 'holytext is a bible app',
-        //     background_color: '#ffffff',
-        //     crossorigin: null, //can be null, use-credentials or anonymous
-        // }),
+        new WorkboxPlugin.GenerateSW({
+            clientsClaim: true,
+            skipWaiting: true,
+        }),
+        new WebpackPwaManifest({
+            name: 'Holytext',
+            short_name: 'holytext',
+            description: 'holytext is a bible app',
+            background_color: '#ffffff',
+            crossorigin: null, //can be null, use-credentials or anonymous
+        }),
         
     ],
     output: {

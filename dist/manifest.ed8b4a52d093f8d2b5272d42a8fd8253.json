@@ -1,0 +1,9 @@
+{
+  "name": "Holytext",
+  "short_name": "holytext",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": ".",
+  "description": "holytext is a bible app",
+  "background_color": "#ffffff"
+}
