@@ -4,6 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const CopyPlugin = require('copy-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 
 module.exports = {
@@ -38,8 +39,11 @@ module.exports = {
             short_name: 'holytext',
             description: 'holytext is a bible app',
             background_color: '#ffffff',
+            theme_color: "#002366",
             crossorigin: null, //can be null, use-credentials or anonymous
         }),
+        new FaviconsWebpackPlugin('./src/logo.png') // svg works too!
+
         
     ],
     output: {
