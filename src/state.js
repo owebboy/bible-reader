@@ -1,21 +1,25 @@
 import ui from './ui';
-import bible from './bible.min.json';
 import tableOfContents from "./tableOfContents"
 
 const state = {
     book: null,
     chapter: null,
+    bible: null,
+
+    giveBible(bible) {
+        state.bible = bible
+    },
 
     update: (book, chapter) => {
         state.book = book;
         state.chapter = chapter;
 
-        ui.list_chapters(bible, book);
+        ui.list_chapters(state.bible, book);
         ui.set_active(book, chapter);
         ui.set_pos(book, chapter);
-        ui.set_book_heading(bible, book);
+        ui.set_book_heading(state.bible, book);
 
-        ui.build_chapter(bible[book].chapters[chapter]);
+        ui.build_chapter(state.bible[book].chapters[chapter]);
 
         ui.build_nav(state.getPrev(), state.getNext());
 
@@ -26,14 +30,14 @@ const state = {
 
     getNext: () => {
         // get the current position
-        let chaptersOfBook = Object.keys(bible[state.book].chapters);
+        let chaptersOfBook = Object.keys(state.bible[state.book].chapters);
 
         let idx = chaptersOfBook.indexOf(state.chapter.toString());
         let nextChapter = chaptersOfBook[idx + 1];
 
         if (idx + 1 > chaptersOfBook.length - 1) {
             // get next book's first chapter
-            let bids = Object.keys(bible);
+            let bids = Object.keys(state.bible);
             let bidx = bids.indexOf(state.book);
             if (bidx > -1 && bidx < bids.length - 1) {
                 let nextBook = bids[bidx + 1];
@@ -54,21 +58,21 @@ const state = {
     },
 
     getPrev: () => {
-        let chaptersOfBook = Object.keys(bible[state.book].chapters);
+        let chaptersOfBook = Object.keys(state.bible[state.book].chapters);
 
         let idx = chaptersOfBook.indexOf(state.chapter.toString());
         let prevChapter = chaptersOfBook[idx - 1];
 
         if (idx - 1 < 0) {
             // get prev chapter's last book
-            let bids = Object.keys(bible);
+            let bids = Object.keys(state.bible);
 
             let bidx = bids.indexOf(state.book);
             if (bidx > 0 && bidx < bids.length) {
                 let prevBook = bids[bidx - 1];
 
-                let chapter = Object.keys(bible[prevBook].chapters)[
-                    Object.keys(bible[prevBook].chapters).length - 1
+                let chapter = Object.keys(state.bible[prevBook].chapters)[
+                    Object.keys(state.bible[prevBook].chapters).length - 1
                 ];
                 return {
                     book: prevBook,
@@ -87,7 +91,7 @@ const state = {
 
     nextChapter: () => {
         // get the current position
-        let chaptersOfBook = Object.keys(bible[state.book].chapters);
+        let chaptersOfBook = Object.keys(state.bible[state.book].chapters);
 
         let idx = chaptersOfBook.indexOf(state.chapter.toString());
         let nextChapter = chaptersOfBook[idx + 1];
@@ -100,7 +104,7 @@ const state = {
     },
 
     prevChapter: () => {
-        let chaptersOfBook = Object.keys(bible[state.book].chapters);
+        let chaptersOfBook = Object.keys(state.bible[state.book].chapters);
 
         let idx = chaptersOfBook.indexOf(state.chapter.toString());
         let prevChapter = chaptersOfBook[idx - 1];
@@ -113,7 +117,7 @@ const state = {
     },
 
     nextBook: () => {
-        let bids = Object.keys(bible);
+        let bids = Object.keys(state.bible);
 
         let idx = bids.indexOf(state.book);
         if (idx > -1 && idx < bids.length - 1) {
@@ -124,7 +128,7 @@ const state = {
     },
 
     prevBook: (last_chapter = false) => {
-        let bids = Object.keys(bible);
+        let bids = Object.keys(state.bible);
 
         let idx = bids.indexOf(state.book);
         if (idx > 0 && idx < bids.length) {
@@ -132,8 +136,8 @@ const state = {
             let prevBook = bids[idx - 1];
             let chapter = 1;
             if (last_chapter) {
-                chapter = Object.keys(bible[prevBook].chapters)[
-                    Object.keys(bible[prevBook].chapters).length - 1
+                chapter = Object.keys(state.bible[prevBook].chapters)[
+                    Object.keys(state.bible[prevBook].chapters).length - 1
                 ];
             }
 

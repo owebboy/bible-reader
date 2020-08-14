@@ -1,4 +1,4 @@
-import bible from './bible.min.json';
+// import bible from './bible.min.json';
 import ui from './ui.js';
 import state from './state';
 import 'normalize.css';
@@ -7,12 +7,24 @@ import elements from './elements';
 import tableOfContents from './tableOfContents';
 
 let app = () => {
-    ui.list_books(bible);
+    return import(
+        /* webpackChunkName: "bible" */
 
-    // set book to be GEN and chapter to be 1
-    state.update('GEN', 1);
+        /* webpackMode: "lazy" */
+        './bible.min.json'
+    )
+        .then(({ default: bible }) => {
+            console.log(bible)
+            ui.list_books(bible);
 
-    tableOfContents.build(bible);
+            state.giveBible(bible)
+
+            // set book to be GEN and chapter to be 1
+            state.update('GEN', 1);
+
+            tableOfContents.build(bible);
+        })
+        .catch((error) => console.log(error));
 };
 
 elements.prev.addEventListener('click', (e) => {
@@ -68,9 +80,7 @@ if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker
             .register('/service-worker.js')
-            .then((registration) => {
-            })
-            .catch((registrationError) => {
-            });
+            .then((registration) => {})
+            .catch((registrationError) => {});
     });
 }
